@@ -1,2 +1,2 @@
 # Blind-Curated-75
-code to the problems
+My code to the problems listed in https://leetcode.com/list/xoqag3yj/ link.
