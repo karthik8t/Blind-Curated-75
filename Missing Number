@@ -9,3 +9,19 @@ public:
         return (n*(n+1))/2 - sum;
     }
 };
+
+
+//another solution
+
+class Solution {
+public:
+    int missingNumber(vector<int>& nums) {
+        int i,x=nums.size();
+        for(i=0;i<nums.size();i++)
+        {
+            x=x^i^nums[i];
+        }
+        // x=x^nums.size();
+        return x;
+    }
+};
