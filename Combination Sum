@@ -1,0 +1,30 @@
+class Solution {
+public:
+    void combo(vector<vector<int>>& result, int target, vector<int>& temp, vector<int>& nums,int index)
+    {
+        if(target==0)
+        {
+            result.push_back(temp);
+            return;
+        }
+        while(index<nums.size() && nums[index]<=target)
+        {
+            temp.push_back(nums[index]);
+            combo(result,target-nums[index],temp,nums,index);
+            index++;
+            temp.pop_back();
+        }
+    }
+    vector<vector<int>> divide(vector<int> nums, int target)
+    {
+        sort(nums.begin(),nums.end());
+        nums.erase(unique(nums.begin(), nums.end()), nums.end());
+        vector<vector<int>> result;
+        vector<int> temp;
+        combo(result,target,temp,nums,0);
+        return result;
+    }
+    vector<vector<int>> combinationSum(vector<int>& candidates, int target) {
+     return divide(candidates,target);   
+    }
+};
