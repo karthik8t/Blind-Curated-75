@@ -1,0 +1,29 @@
+class Solution {
+public:
+    vector<vector<string>> groupAnagrams(vector<string>& strs) {
+        map<map<char,int>,vector<string>> m;
+        vector<vector<string>> result;
+        int i,k;
+        map<char,int> key;
+        for(i=0;i<strs.size();i++)
+        {
+            for(k=0;k<strs[i].length();k++)
+            {
+                if(key.find(strs[i][k])==key.end())
+                {
+                    key[strs[i][k]]=1;
+                }
+                else{
+                    key[strs[i][k]]+=1;
+                }
+            }
+            m[key].push_back(strs[i]);
+            key.clear();
+        }
+        for(auto itr=m.begin();itr!=m.end();itr++)
+        {
+            result.push_back(itr->second);
+        }
+        return result;
+    }
+};
