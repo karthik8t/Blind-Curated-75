@@ -1,0 +1,22 @@
+class Solution {
+public:
+    int recurse(vector<int>& dyn,int n)
+    {
+        if(n==0)
+        {
+            return 1;
+        }
+        if(n<0){
+            return 0;
+        }
+        if(dyn[n]!=0){
+            return dyn[n];
+        }
+        dyn[n]=recurse(dyn,n-1)+recurse(dyn,n-2);
+        return dyn[n];
+    }
+    int climbStairs(int n) {
+        vector<int> dyn(n+1,0);
+        return recurse(dyn,n);        
+    }
+};
